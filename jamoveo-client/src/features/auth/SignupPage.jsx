@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useUser } from '../../context/UserContext';
 import signupImage from '../../assets/images/signup.png';
-import logo from '../../assets/icon/iconlogo.png';
+import logo from '../../assets/icon/Iconlogo.png';
 import api from '../../utils/api';
 
 // רשימת כלי הנגינה
