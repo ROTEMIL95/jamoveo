@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useUser } from '../../context/UserContext';
 import loginImage from '../../assets/images/login.png';
-import logo from '../../assets/icon/Iconlogo.png';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import logo from '../../assets/icon/iconlogo.png';
+import api from '../../utils/api';
 
 function LoginPage() {
   const [form, setForm] = useState({ username: '', password: '' });
@@ -12,7 +12,6 @@ function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useUser();
-  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,10 +21,9 @@ function LoginPage() {
     e.preventDefault();
     setError('');
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, form);
+      const response = await api.post('/auth/login', form);
       setUser(response.data.user); 
       localStorage.setItem('user', JSON.stringify(response.data.user));
-
       
       // Check if user is admin or regular player and redirect accordingly
       if (response.data.user.role === 'admin') {
@@ -34,7 +32,8 @@ function LoginPage() {
         navigate('/player');
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      console.error('Login error:', err);
+      setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
     }
   };
 

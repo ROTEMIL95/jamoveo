@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useUser } from '../../context/UserContext';
 import signupImage from '../../assets/images/signup.png';
-import logo from '../../assets/icon/Iconlogo.png';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import logo from '../../assets/icon/iconlogo.png';
+import api from '../../utils/api';
 
 // רשימת כלי הנגינה
 const instruments = [
@@ -21,7 +21,6 @@ function SignupPage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { setUser } = useUser();
-  const API_URL = import.meta.env.VITE_API_URL;
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -35,7 +34,7 @@ function SignupPage() {
     setSuccessMessage('');
     
     try {
-      const response = await axios.post(`${API_URL}/auth/signup`, form);
+      const response = await api.post('/auth/signup', form);
       // לא שומרים את המשתמש בקונטקסט, כי נרצה שיתחבר ידנית
       // setUser(response.data);
       
@@ -48,7 +47,8 @@ function SignupPage() {
       }, 1500);
       
     } catch (err) {
-      setError(err.response?.data?.message || 'Signup failed');
+      console.error('Signup error:', err);
+      setError(err.response?.data?.message || 'Signup failed. Please try again.');
     }
   };
 
