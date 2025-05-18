@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { useSocket } from '../../hooks/useSocket';
 import { toast } from 'react-toastify';
-import echo from '../../assets/images/echo.png';
-import gold from '../../assets/images/gold.png';
-import falling from '../../assets/images/falling.png';
-import waves from '../../assets/images/waves.png';
-import shivers from '../../assets/images/shivers.png';
-import alive from '../../assets/images/alive.png';
-import horizon from '../../assets/images/horizon.png';
+import echo from '../../assets/images/Echo.png';
+import gold from '../../assets/images/Gold.png';
+import falling from '../../assets/images/Falling.png';
+import waves from '../../assets/images/Waves.png';
+import shivers from '../../assets/images/Shivers.png';
+import alive from '../../assets/images/Alive.png';
+import horizon from '../../assets/images/Horizon.png';
 
 
 const songs = [
