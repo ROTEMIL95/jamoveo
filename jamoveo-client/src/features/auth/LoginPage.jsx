@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useUser } from '../../context/UserContext';
 import loginImage from '../../assets/images/login.png';
-import logo from '../../assets/icon/iconlogo.png';
+import logo from '../../assets/icon/Iconlogo.png';
 import api from '../../utils/api';
 
 function LoginPage() {
