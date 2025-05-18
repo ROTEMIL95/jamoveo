@@ -17,7 +17,7 @@ import { ScraperModule } from './scraper/scraper.module';
     UsersModule, 
     SongsModule, 
     SessionsModule, 
-    MongooseModule.forRoot(process.env.MONGODB_URI!), 
+    MongooseModule.forRoot(process.env.MONGO_URI!), 
     ScraperModule ,
   ],
   controllers: [AppController],
