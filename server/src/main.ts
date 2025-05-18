@@ -8,8 +8,16 @@ async function bootstrap() {
   // הפעלת Pipeline של ולידציה עבור DTOים (כמו @Body)
   app.useGlobalPipes(new ValidationPipe());
 
+  // Environment-based CORS configuration
+  const isDevelopment = process.env.NODE_ENV !== 'production';
+  const allowedOrigins = isDevelopment 
+    ? ['https://jamoveoil.netlify.app', 'http://localhost:5173', 'http://localhost:3000']
+    : ['https://jamoveoil.netlify.app'];
+  
+  console.log(`CORS configured for: ${allowedOrigins.join(', ')}`);
+  
   app.enableCors({
-    origin: 'https://jamoveoil.netlify.app', 
+    origin: allowedOrigins,
     credentials: true,
   });
 
